@@ -1,0 +1,17 @@
+{
+    "name": "hackzcrackz/stock",
+    "description": "Stock DoDayDream",
+    "type": "project",
+    "require": {
+        "laravel/laravel": "^5.4",
+        "adldap2/adldap2-laravel": "^3.0",
+        "almasaeed2010/adminlte": "^2.3",
+        "predis/predis": "^1.1"
+    },
+    "authors": [
+        {
+            "name": "Hackz Crackz",
+            "email": "hchackzcrackzltd@gmail.com"
+        }
+    ]
+}
