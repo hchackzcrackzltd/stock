@@ -17,6 +17,7 @@ Route::get('/', function () {
 
 Route::group(['prefix'=>'inventory/itemmaster'],function(){
   Route::get('/','inventory\itemmaster@getitemlist')->name('itemmaster_view');
+  Route::post('additem','inventory\itemmaster@additem')->name('additem');
 });
 
 Route::group(['prefix'=>'inventory/goodsreceipt'],function(){

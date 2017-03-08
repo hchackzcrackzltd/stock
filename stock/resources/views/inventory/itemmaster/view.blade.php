@@ -4,6 +4,28 @@
   <h1>
     Item Master
   </h1>
+    @foreach ($errors->getMessages() as $valueerrmsg)
+  <div class="row">
+  <div class="col-xs-4 pull-right">
+  <div class="alert alert-danger alert-dismissible">
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+  <h4><i class="icon fa fa-ban"></i> Error!</h4>
+  <p class="text-capitalize">{{$valueerrmsg[0]}}</p>
+  </div>
+</div>
+</div>
+  @endforeach
+@if(session('status'))
+  <div class="row">
+  <div class="col-xs-4 pull-right">
+  <div class="alert alert-success alert-dismissible">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+    <h4><i class="icon fa fa-check"></i> Complete</h4>
+    <p class="text-capitalize">{{session('status')}}</p>
+  </div>
+</div>
+</div>
+@endif
   <ol class="breadcrumb">
     <li><a href="{{route('index')}}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
     <li class="active">Item Master</li>
@@ -110,7 +132,8 @@
   </form>
 </div>
 <div class="modal fade additem" tabindex="-1" role="dialog" aria-labelledby="Add Item">
-  <form class="add" action="index.html" method="post">
+  <form class="add" action="{{route('additem')}}" method="post">
+    {{ csrf_field() }}
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -122,19 +145,19 @@
           <div class="col-xs-12">
             <div class="form-group">
               <label for="Description">Description</label>
-              <input type="input" class="form-control" id="Description" placeholder="Description" maxlength="300" required>
+              <input type="input" class="form-control" id="Description" name="description" placeholder="Description" maxlength="300" required>
             </div>
           </div>
           <div class="col-md-9 col-xs-12">
             <div class="form-group">
               <label for="mmt">Minimum Item</label>
-              <input type="number" class="form-control" id="mmt" placeholder="Minimum Item" min="0" required>
+              <input type="number" class="form-control" id="mmt" name="mmt" placeholder="Minimum Item" min="0" required>
             </div>
           </div>
           <div class="col-md-3 col-xs-12">
             <div class="form-group">
               <label for="Status">Status</label>
-              <select class="form-control" id="Status" required>
+              <select class="form-control" id="Status" name="status" required>
                 <option value="ac" selected>Active</option>
                 <option value="ic">Inactive</option>
               </select>
@@ -143,13 +166,13 @@
           <div class="col-md-9 col-xs-12">
             <div class="form-group">
               <label for="Pack_Size">Pack Size</label>
-              <input type="number" class="form-control" id="Pack_Size" placeholder="Pack Size" min="0" required>
+              <input type="number" class="form-control" id="Pack_Size" name="pack_size" placeholder="Pack Size" min="0" required>
             </div>
           </div>
           <div class="col-md-3 col-xs-12">
             <div class="form-group">
               <label for="uom">UOM</label>
-              <select class="form-control" id="uom" required>
+              <select class="form-control" id="uom" name="uom" required>
                 <option value="ชิ้น" selected>ชิ้น</option>
                 <option value="หีบ">หีบ</option>
                 <option value="ลัง">ลัง</option>
